@@ -1,0 +1,92 @@
+<style>
+
+
+.img-product {
+  object-fit: cover;
+  object-position: center;
+  height: 60vh;
+  width: 100%;
+  z-index: 150;
+}
+
+.img-hidehover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* making it as big as parent container */
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+    /* to make sure they are both same resolution */
+  transition: 2s;
+/* border: 2px solid black; */
+}
+
+.img-hidehover:hover {
+  opacity: 0;
+}
+
+.title {
+  position: absolute;
+}
+
+video {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+#myVideo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 100;
+}
+
+.vw-100 {
+  width: 100%;
+
+}
+
+.vh-100 {
+  height: 80%;
+
+}
+
+</style>
+
+
+
+
+<section class="padded grid-center no-pad">
+    {% for item in page.portfolio %}
+      <div class="col-5_md-6_sm-11 grid">
+      <div class="col-11_sm-12 relative">
+  
+  
+      <img class="img-hidehover" src="{{ item.first_image }}"></img>
+  
+        {% if item.video == true %}
+        <video id="myVideo" class="img-hidehover bg-video bg_cover vw-100 vh-100" autoplay muted playsinline autobuffer="true" loop poster="/videos/covers/homepage_video_cover.jpg">
+        <source src="{{item.video_path}}" type="video/mp4" />
+  
+        Your browser does not support the video tag.
+        </video>
+        {% endif %}
+  
+  
+      <img class="img-product" src="{{ item.second_image }}"></img>
+      <h2 class="title_over mob-padding"> {{item.title}} </h2>
+  
+      </div>
+      <div class="col-12 padded-4"></div>
+      </div>
+  
+    {% endfor %}
+
+  
+  </section>

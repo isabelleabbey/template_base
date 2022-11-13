@@ -7,10 +7,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <title>{{page.title}}</title>
+
+    <!-- Viewport meta for responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--------------------- SEO Metadata ----------------------->
+    <title>{{page.seo.title | default: site.data.site-settings.seo.title}}</title> 
+    <meta name="description" content="{{ page.seo.description | default: site.data.site-settings.seo.description }}">
+    <meta name="keywords" content="{{ page.seo.keywords | default: site.data.site-settings.seo.keywords }}">
+
+    {% if page.seo.hide-from-google == true %}
+        <meta name="robots" content="noindex, nofollow">
+    {% else %}
+        <meta name="robots" content="index, follow">
+    {% endif %}
+
+    <!-- Metadata for favicon files -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="/icons/site.webmanifest">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- Meta for social sharing -->
+    <meta property="og:title" content="{{ page.title | default: site.data.site-settings.seo.title }}">
+    <meta property="og:type" content="{{ page.title | default: site.data.site-settings.seo.type }}">
+    <meta property="og:description" content="{{ page.seo.description | default: site.data.site-settings.seo.description }}"> 
+    <meta property="og:image" content="{{ page.seo.social_image | default: site.data.site-settings.seo.social_image }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta name="twitter:card" content="{{ page.seo.twitter_card | default: site.data.site-settings.seo.twitter_card }}">
+    <meta name="twitter:description" content=" {{ page.seo.twitter_description | default: site.data.site-settings.seo.twitter_description}} ">
+    <meta name="og:site_name" content="{{ site.data.site-settings.seo.site_name }}">
+    <link rel="icon" type="image/png" href="{{ site.data.site-settings.seo.favicon_image }}">
+
+    <!-- Gridlex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridlex/2.7.1/gridlex.min.css" />
+
+    <!-- Font Awesome Version 5 for Icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+
+    <!-- Add jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+
+    <!-- this is javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js" defer></script>
+
+    <!-- javascript -->
+    <script src="/javascript/scripts.js" defer></script>
+
+    <!-- Custom stylesheet -->
+    <link href="/style.css" rel="stylesheet" />
+
 </head>
 
 <body>
+
+<!-- header -->
+<header class="relative">
+    <section class="grid-center flex-display bg-sage {{page.menu}}">
+        <div class="col-4 centered med-hide">
+            <nav class="inline">
+            <a href="/about"> link </a>
+            <a href="/projects"> link</a>
+            </nav>
+        </div>
+        <div class="col-4_md-12_sm-10 centered">
+            <a href="/home">
+            <img class="logo" src="/images/coralie-logo-1.png">
+            </a>
+        </div>
+        <div class="col-4 centered  med-hide">
+            <nav class="inline">
+            <a href="/process"> link </a>
+            <a href="/contact"> link </a>
+            </nav>
+        </div>
+
+    <!-- burger menu -->
+    <nav class="mob-show">
+        <div class="burger-button">
+            <span class="burger-top"></span>
+            <span class="burger-middle"></span>
+            <span class="burger-bottom"></span>
+        </div>
+        <div class="burger-menu">
+            <a href="/home.html">Home</a>
+                <a href="/about"> about </a>
+                <a href="/projects"> link</a>
+            <a href="/process"> link </a>
+            <a href="/contact"> link </a>
+        </div>
+    </nav>
+
+    </section>
+
+</header>
+
+
+
+
+
+
+
+
     {{content}}
+
+
+
+
+<footer class="grid-center {{page.menu}}">
+
+    <div class="col-3_md-4_sm-6 left mob-center padded-sides no-pad mt-1">
+        <a href="/index.html">
+        <img class="logo-footer" src="/images/test-logo.png">
+    </a>
+    </div>
+    <div class="col-3_sm-4 left mt-1 med-hide mob-hide">
+    <nav class="block border-left">
+        <a href="/about"> About </a><br>
+        <a href="/process">Process </a><br>
+        <a href="/projects">Projects </a>
+    </nav>
+    </div>
+    
+    <div class="col-3_sm-6 left mt-1 med-hide mob-hide">
+    <nav class="block border-left-med">
+        <a href="#"> <i class="fab fa-facebook-f"></i> &nbsp Facebook  </a><br>
+        <a href="#">  <i class="fab fa-pinterest-p"></i> &nbsp Pinterest </a><br>
+        <a href="# "> <i class="fab fa-instagram"></i> &nbsp Instagram</a>
+    </nav>
+    </div>
+    
+    <div class="col-3_md-6_sm-12 left mt-1 mob-center">
+    <nav class="hide-22 centered border-left-med">
+        <a href="#"> <i class="fab fa-facebook-f"></i>   </a>
+        <a href="#">  <i class="fab fa-pinterest-p"></i></a>
+        <a href="#"> <i class="fab fa-instagram"></i></a>
+    </nav>
+    <nav class="block">
+        <a href="mailto:enquiries@coralieestrade.com">E: email </a><br>
+        <a href="#" class="mob-hide"> T: telephone</a><br><br>
+        <a class="footer-text mb-mob"> <p  class="footer-text white">  © 2022, Company Name. <br class="hide-3">All rights reserved. Website by  <a href="https://klioh.com">Klioh Studio </a></p> </a>
+    </nav>
+    </div>
+    
+</footer>
+
+
+
+
+
 </body>
 
 </html>

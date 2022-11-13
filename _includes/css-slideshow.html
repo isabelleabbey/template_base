@@ -1,0 +1,138 @@
+<style>
+/* css slideshow */
+
+.css-slideshow{
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  /* margin: 5em auto .5em auto; */
+}
+.css-slideshow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.css-slideshow figure{
+  width: 100%;
+  height: auto;
+  margin: 0;
+  background: rgba(245,245,245,0);
+  float: left;
+  margin-left: -100%;
+  transform: translateX(100%);
+}
+.css-slideshow img{
+  box-shadow: 0 0 2px #666;
+
+  object-fit: cover;
+  object-position: center;
+    width: 100%;
+    height: 70vh;
+    border: 2px solid black;
+}
+.css-slideshow figcaption{
+  position: absolute;
+  top: 0;
+  color: #fff;
+  background: rgba(0,0,0, .3);
+  font-size: .8em;
+  padding: 8px 12px;
+  opacity: 0;
+  transition: opacity .5s;
+}
+.css-slideshow:hover figure figcaption{
+  transition: opacity .5s;
+  opacity: 1;
+}
+.css-slideshow-attr{
+  max-width: 495px;
+  text-align: right;
+  font-size: .7em;
+  font-style: italic;
+  margin:0 auto;
+}
+.css-slideshow-attr a{
+  color: #666;
+}
+.css-slideshow figure{
+  opacity:0;
+}
+figure:nth-child(1) {
+  animation: xfade 2s 2s infinite;
+}
+figure:nth-child(2) {
+  animation: xfade 2s 1.75s infinite;
+}
+figure:nth-child(3) {
+  animation: xfade 2s 1.5s infinite;
+}
+figure:nth-child(4) {
+  animation: xfade 2s 1.25s infinite;
+}
+figure:nth-child(5) {
+  animation: xfade 2s 1s infinite;
+}
+figure:nth-child(6) {
+  animation: xfade 2s 0.75s infinite;
+}
+figure:nth-child(7) {
+  animation: xfade 2s 0.5s infinite;
+}
+figure:nth-child(8) {
+  animation: xfade 2s 0.25s infinite;
+}
+
+@keyframes xfade{
+  0%{
+    opacity: 1;
+  }
+  12.5% {
+    opacity: 1;
+  }
+  14.5%{
+    opacity: 0;
+  }
+  98% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>
+
+
+
+
+<section class="padded grid no-pad">
+
+    <div class="col-8_sm-12">
+  <div class="css-slideshow">
+    {% for item in page.animation_images %}
+      <figure>
+          <img src="{{item.first_image}}" alt="class-header-css3" class="alignnone size-full wp-image-172" />
+      </figure>
+      <figure>
+          <img src="{{item.second_image}}" alt="class-header-semantics" class="alignnone size-full wp-image-179" />
+      </figure>
+      <figure>
+          <img src="{{item.third_image}}" alt="class-header-offline" class="alignnone size-large wp-image-178" />
+      </figure>
+      <figure>
+          <img src="{{item.fourth_image}}" alt="class-header-device" class="alignnone size-full wp-image-177" />
+      </figure>
+  <figure>
+          <img src="{{item.fifth_image}}" alt="class-header-connectivity" class="alignnone size-large wp-image-176" />
+      </figure>
+      <figure>
+          <img src="{{item.sixth_image}}" alt="class-header-multimedia" class="alignnone size-large wp-image-175" />
+      </figure>
+      <figure>
+          <img src="{{item.seventh_image}}" alt="class-header-3d" class="alignnone size-large wp-image-174" />
+      </figure>
+      <figure>
+          <img src="{{item.eighth_image}}" alt="class-header-performance" class="alignnone size-large wp-image-173" />
+        </figure>
+        {% endfor %}
+    </div>
+</section>
